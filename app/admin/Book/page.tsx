@@ -1,72 +1,59 @@
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 
-export const revalidate = 0
+export const revalidate = 0;
 
 export default async function ListBook() {
-    async function deleteBook(formData: FormData){
-        "use server"
-        const id = formData.get("id") as string;
-        await sql`DELETE from book where id=${id}`
-        revalidatePath("/admin/book")
-    }
-    const { rows } = await sql`SELECT * from book`;
-    return (
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          justifyContent: 'flex-end', 
-          height: '100vh', 
-          backgroundColor: 'white' 
-        }}>
-            <h1 style={{ 
-              color: 'black', 
-              fontSize: '2rem', 
-              marginBottom: '1rem' 
-            }}>
-              Lista de Livros
-            </h1>
-            <table style={{ 
-              color: 'black', 
-              borderCollapse: 'collapse' 
-            }}>
-                <thead>
-                    <tr> 
-                      <td style={{ border: '1px solid black', padding: '0.5rem' }}>Título</td> 
-                      <td style={{ border: '1px solid black', padding: '0.5rem' }}>Autor</td> 
-                      <td style={{ border: '1px solid black', padding: '0.5rem' }}>Número de Páginas</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        rows.map((book) => {
-                            return (
-                                <tr key={book.id}>
-                                  <td style={{ border: '1px solid black', padding: '0.5rem' }}>{book.titulo}</td> 
-                                  <td style={{ border: '1px solid black', padding: '0.5rem' }}>{book.autor}</td> 
-                                  <td style={{ border: '1px solid black', padding: '0.5rem' }}>{book.num_paginas}</td>
-                                  <td>
-                                    <form>
-                                      <input type="text" hidden name="id" value={book.id}/>   
-                                      <button formAction={deleteBook} style={{ 
-                                        backgroundColor: '#FF0000', 
-                                        color: 'white', 
-                                        padding: '0.5rem 1rem', 
-                                        borderRadius: '0.5rem', 
-                                        border: 'none', 
-                                        cursor: 'pointer' 
-                                      }}>
-                                        Excluir
-                                      </button>
-                                    </form>
-                                  </td> 
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
-        </div>
-    )
+  const deleteBook = async (id: string) => {
+    await sql`DELETE from book where id=${id}`;
+    revalidatePath("/admin/book");
+  };
+
+  const { rows } = await sql`SELECT * from book`;
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="max-w-4xl p-8">
+        <h1 className="text-center text-3xl font-bold mb-8 text-gray-800">
+          Lista de Livros
+        </h1>
+
+        <table className="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr>
+              <th className="border border-gray-300 p-2">Título</th>
+              <th className="border border-gray-300 p-2">Autor</th>
+              <th className="border border-gray-300 p-2">Número de Páginas</th>
+              <th className="border border-gray-300 p-2">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((book) => (
+              <tr key={book.id}>
+                <td className="border border-gray-300 p-2">{book.titulo}</td>
+                <td className="border border-gray-300 p-2">{book.autor}</td>
+                <td className="border border-gray-300 p-2">{book.num_paginas}</td>
+                <td className="border border-gray-300 p-2">
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      deleteBook(book.id);
+                    }}
+                  >
+                    <input type="hidden" name="id" value={book.id} />
+                    <button
+                      type="submit"
+                      className="text-red-700"
+                    >
+                      Excluir
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
