@@ -3,15 +3,15 @@ export default function Admin(){
         <div style={{ 
           display: 'flex', 
           flexDirection: 'column', 
-          justifyContent: 'space-between', 
+          alignItems: 'center', 
+          justifyContent: 'flex-end', 
           height: '100vh', 
           backgroundColor: '#3d3d3d' 
         }}>
         <h1 style={{ 
           color: 'white', 
           fontSize: '2rem', 
-          marginBottom: '1rem', 
-          textAlign: 'center'
+          marginBottom: '1rem' 
         }}>
           Área Administrativa
         </h1>
