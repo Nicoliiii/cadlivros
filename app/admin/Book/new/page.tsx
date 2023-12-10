@@ -21,17 +21,41 @@ export default function NewBook({
         console.log("Acessou a função")
     }
     return (
-        <div>
-        <h1 className="text-white text-center text-4xl">Cadastrar Livros</h1>
-            <form>
-                <input type="text" name="titulo" placeholder="Digite o título do livro"/><br/><br/>
-                <input type="text" name="autor" placeholder="Digite o autor do livro"/> <br/><br/>
-                <input type="text" name="num_paginas" placeholder="Digite o número de páginas do livro"/> <br/><br/>
-                <br/>
-                
-                <button  formAction={saveBook} className="text-lime-950">Salvar</button>
-            </form>
-            </div>
-
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          height: '100vh', 
+          backgroundColor: '#3d3d3d' 
+        }}>
+        <h1 style={{ 
+          color: 'white', 
+          fontSize: '2rem', 
+          marginBottom: '1rem' 
+        }}>
+          Cadastrar Livros
+        </h1>
+        <form style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          gap: '1rem' 
+        }}>
+            <input type="text" name="titulo" placeholder="Digite o título do livro"/>
+            <input type="text" name="autor" placeholder="Digite o autor do livro"/>
+            <input type="text" name="num_paginas" placeholder="Digite o número de páginas do livro"/>
+            <button formAction={saveBook} style={{ 
+              backgroundColor: '#32CD32', 
+              color: 'white', 
+              padding: '0.5rem 1rem', 
+              borderRadius: '0.5rem', 
+              border: 'none', 
+              cursor: 'pointer' 
+            }}>
+              Salvar
+            </button>
+        </form>
+        </div>
     )
 }
