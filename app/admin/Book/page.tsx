@@ -12,89 +12,33 @@ export default async function ListBook() {
     }
     const { rows } = await sql`SELECT * from book`;
     return (
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          height: '100vh', 
-          backgroundColor: 'white' 
-        }}>
-            <h1 style={{ 
-              color: 'black', 
-              fontSize: '2rem', 
-              marginBottom: '1rem' 
-            }}>
-              Lista de Livros
-            </h1>
+        <div>
+            <h1 className="text-center text-white">Lista de Livros</h1>
 
-            <table style={{ 
-              width: '100%', 
-              borderCollapse: 'collapse', 
-              border: '1px solid #ccc' 
-            }}>
+            <table>
                 <thead>
-                    <tr> 
-                      <td style={{ 
-                        border: '1px solid #ccc', 
-                        padding: '1rem', 
-                        color: 'black' 
-                      }}>Título </td> 
-                      <td style={{ 
-                        border: '1px solid #ccc', 
-                        padding: '1rem', 
-                        color: 'black' 
-                      }}>Autor</td> 
-                      <td style={{ 
-                        border: '1px solid #ccc', 
-                        padding: '1rem', 
-                        color: 'black' 
-                      }}>Número de Páginas</td>
-                    </tr>
+                    <tr> <td>Título </td> <td>Autor</td> <td>Número de Páginas</td></tr>
                 </thead>
                 <tbody>
                     {
                         rows.map((book) => {
                             return (
-                                <tr key={book.id}>
-                                  <td style={{ 
-                                    border: '1px solid #ccc', 
-                                    padding: '1rem', 
-                                    color: 'black' 
-                                  }}>{book.titulo}</td> 
-                                  <td style={{ 
-                                    border: '1px solid #ccc', 
-                                    padding: '1rem', 
-                                    color: 'black' 
-                                  }}>{book.autor}</td> 
-                                  <td style={{ 
-                                    border: '1px solid #ccc', 
-                                    padding: '1rem', 
-                                    color: 'black' 
-                                  }}>{book.num_paginas}</td>
-                                  <td style={{ 
-                                    border: '1px solid #ccc', 
-                                    padding: '1rem', 
-                                    color: 'black' 
-                                  }}>
+                                <tr key={book.id}><td>{book.titulo}</td> <td>{book.autor}</td> <td>{book.num_paginas}</td>
+                                <td>
                                     <form >
-                                      <input type="text" hidden name="id" value={book.id}/>   
-                                      <button className="text-red-700" formAction={deleteBook} style={{ 
-                                        backgroundColor: '#f44336', 
-                                        color: 'white', 
-                                        padding: '0.5rem 1rem', 
-                                        borderRadius: '0.5rem', 
-                                        border: 'none', 
-                                        cursor: 'pointer' 
-                                      }}>Excluir</button>
+                                     <input type="text" hidden name="id" value={book.id}/>   
+                                    <button className="text-red-700" formAction={deleteBook}>Excluir</button>
                                     </form>
-                                  </td> 
+                                
+                                </td> 
                                 </tr>
                             )
                         })
                     }
                 </tbody>
             </table>
+
+
         </div>
     )
 }
