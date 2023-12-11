@@ -1,4 +1,6 @@
+// Exporta a função padrão Admin
 export default function Admin() {
+  // Retorna um elemento div que contém um título e dois links
   return (
       <div style={{ 
         display: 'flex', 

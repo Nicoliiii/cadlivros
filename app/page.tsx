@@ -1,4 +1,6 @@
+// Exporta a função padrão Home
 export default function Home() {
+  // Retorna um elemento div que contém um título e um link
   return (
     <div style={{ 
       display: 'flex', 
