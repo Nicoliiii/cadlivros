@@ -19,26 +19,26 @@ export default function Admin() {
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
-        marginBottom: '1rem' 
+        gap: '1rem' 
       }}>
         <a href="/admin/Book/new" style={{ 
           color: 'black', 
           fontSize: '1.5rem', 
           textDecoration: 'none', 
-          border: '1px solid white', 
+          border: '1px solid black', 
           padding: '0.5rem 1rem', 
           borderRadius: '0.5rem', 
-          marginBottom: '1rem' 
+          marginBottom: '1rem',
         }}>
           Cadastrar Livros
         </a>
         <a href="/admin/Book" style={{ 
-          color: 'white', 
+          color: 'black', 
           fontSize: '1.5rem', 
           textDecoration: 'none', 
-          border: '1px solid white', 
+          border: '1px solid black', 
           padding: '0.5rem 1rem', 
-          borderRadius: '0.5rem' 
+          borderRadius: '0.5rem',
         }}>
           Listar Livros
         </a>
