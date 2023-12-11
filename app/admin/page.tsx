@@ -9,7 +9,7 @@ export default function Admin() {
         backgroundColor: 'white' 
       }}>
       <h1 style={{ 
-        color: 'white', 
+        color: 'black', 
         fontSize: '2rem', 
         marginBottom: '1rem' 
       }}>
@@ -33,7 +33,7 @@ export default function Admin() {
           Cadastrar Livros
         </a>
         <a href="/admin/Book" style={{ 
-          color: 'black', 
+          color: 'white', 
           fontSize: '1.5rem', 
           textDecoration: 'none', 
           border: '1px solid white', 
