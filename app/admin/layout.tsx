@@ -9,17 +9,12 @@ export default function AdminLayout({
     return (
         <div className="max-w-[1024px] m-auto">
             <NavBar />
-            <div className="flex">
+            <div className="flex justify-center items-center min-h-screen">
                 <Aside />
                 <div className="p-12 w-screen">
                 {children}
                 </div>
-                
-
             </div>
-
         </div>
-
-
     )
 }
