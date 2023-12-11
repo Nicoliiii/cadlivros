@@ -27,10 +27,10 @@ export default function NewBook({
           alignItems: 'center', 
           justifyContent: 'center', 
           height: '100vh', 
-          backgroundColor: '#3d3d3d' 
+          backgroundColor: 'white' 
         }}>
         <h1 style={{ 
-          color: 'white', 
+          color: 'black', 
           fontSize: '2rem', 
           marginBottom: '1rem' 
         }}>
@@ -42,9 +42,30 @@ export default function NewBook({
           alignItems: 'center', 
           gap: '1rem' 
         }}>
-            <input type="text" name="titulo" placeholder="Digite o título do livro"/>
-            <input type="text" name="autor" placeholder="Digite o autor do livro"/>
-            <input type="text" name="num_paginas" placeholder="Digite o número de páginas do livro"/>
+            <input type="text" name="titulo" placeholder="Digite o título do livro" style={{ 
+              color: 'black', 
+              fontSize: '1rem', 
+              padding: '0.5rem', 
+              borderRadius: '0.5rem', 
+              border: '1px solid black', 
+              marginBottom: '1rem' 
+            }}/>
+            <input type="text" name="autor" placeholder="Digite o autor do livro" style={{ 
+              color: 'black', 
+              fontSize: '1rem', 
+              padding: '0.5rem', 
+              borderRadius: '0.5rem', 
+              border: '1px solid black', 
+              marginBottom: '1rem' 
+            }}/>
+            <input type="text" name="num_paginas" placeholder="Digite o número de páginas do livro" style={{ 
+              color: 'black', 
+              fontSize: '1rem', 
+              padding: '0.5rem', 
+              borderRadius: '0.5rem', 
+              border: '1px solid black', 
+              marginBottom: '1rem' 
+            }}/>
             <button formAction={saveBook} style={{ 
               backgroundColor: '#32CD32', 
               color: 'white', 
